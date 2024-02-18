@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/sorting.png" />
+    <link rel="icon" type="image/svg+xml" href="/bar-chart.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sorting Visualizer</title>
     <style>
@@ -15,12 +15,21 @@
         }
         
         .link-container a {
-            font-size: 20px;
+            font-size: 15px;
+            font-family: 'Courier New', Courier, monospace;
             padding: 5px 10px;
             background-color: black;
             color: lightseagreen;
             border-radius: 5px;
             cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .link-container a:hover {
+            background-color: lightseagreen;
+            color: black;
+            cursor: default;
         }
     </style>
 </head>
@@ -28,8 +37,34 @@
 <body>
     <div id="root"></div>
 
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="link-container">
+        <a href="https://srikanth-algo-visualizer.netlify.app/" onclick="if(!clicked) { window.location.href = this.href; }" id="home-link">Home</a>
+    </div>
 
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+        let clicked = false;
+        document.getElementById("home-link").addEventListener("mouseover", function() {
+            if (!clicked) {
+                this.innerText = "Click me";
+            }
+        });
+
+        document.getElementById("home-link").addEventListener("mouseout", function() {
+            if (!clicked) {
+                this.innerText = "Home";
+            }
+        });
+
+        document.getElementById("home-link").addEventListener("click", function() {
+            clicked = !clicked;
+            if (clicked) {
+                this.innerText = "Click me";
+            } else {
+                this.innerText = "Home";
+            }
+        });
+    </script>
 </body>
 
 </html>

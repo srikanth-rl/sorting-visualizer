@@ -54,18 +54,16 @@ function* partition(
 ): Generator<TAnimation, number, any> {
  
   let p = startIdx;
-  yield colorIndices([[p, COLOR.YELLOW]]);
 
   for (let i = startIdx; i < endIdx; i++) {
     if (arr[i] < arr[endIdx]) {
       yield* swap(arr, i, p);
-      yield colorIndices([[p, COLOR.YELLOW]]);
       p++;
     }
   }
   yield clearIndices([p]);
   yield* swap(arr, p, endIdx);
-  yield colorIndices([[p, COLOR.YELLOW]]);
+  yield colorIndices([[p, COLOR.PURPLE]]);
   
   return p;
 }
@@ -85,7 +83,7 @@ function clearIndices(indices: number[]) {
 }
 
 function getShuffleDelay(arraySize: number): number {
-  return (20 * 100) / arraySize;
+  return (0 * 100) / arraySize;
 }
 function getSortedDelay(arraySize: number): number {
   return (10 * 100) / arraySize;

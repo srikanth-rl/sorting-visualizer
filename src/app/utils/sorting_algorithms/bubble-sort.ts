@@ -12,7 +12,7 @@ function* bubbleSort(arr: number[]): AnimationGenerator {
         yield* swap(arr, i - 1, i);
         isSorted = false;
       }
-      // console.log(arr[i]);
+      yield colorIndices([[i, COLOR.PURPLE]]);
     }
     sortedIdx++;
     yield colorIndices([[arr.length - sortedIdx, COLOR.PURPLE]]);
